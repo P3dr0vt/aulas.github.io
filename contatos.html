@@ -2,6 +2,13 @@
     <head>
             <title> Prova do Paulo</title>
     </head>
+    <body>
+        
+   <form action="server.php" method="post" id="form1"> 
+    <p>Email:    <input type="email" id="email"> </p> 
+       <p> Senha: <input type="password" id="senha"  required disabled> <!-- o disabled desativa o teclado--></p>
+       <p> <input onclick="verifica()" type="button" value="Enviar"> </p>
+    </form>
 
         <br>
         <button type='button'onclick="escreve('1')">1</button>
@@ -19,56 +26,51 @@
         <button type='button'onclick="escreve('0')">0</button>
         <button type='button'onclick="back('<')"><</button> <!--backspace-->
         <button type='button'onclick="apaga('x')">x</button>
-        
         <script>
 
             function apaga()
             {
-                document.getElementById("n1").value = "";
+                document.getElementById("senha").value = "";
             }
 
             function escreve(n)
             {
-                document.getElementById("n1").value += n;
+                document.getElementById("senha").value += n;
             }
 
             //função que apaga um elemento expecífico.
 
             function back() 
              {
-                            var campo = document.getElementById("n1");
+                            var campo = document.getElementById("senha");
                             var valorCampo = campo.value;
                             var novoValorCampo = valorCampo.substring(0, valorCampo.length - 1);
                             campo.value = novoValorCampo;
             }
 
             //função que verifica se as senhas estão iguais
-            function validaSenha() 
+            
+            
+            function verifica()
             {
-            var senha1 = document.getElementById("n1").value.trim(); //trim() atributo que tira os espaços em branco
-            var senha2 = document.getElementById("n2").value.trim();
-            if (senha1 == senha2)
-            {
-                return true;
-            } else {
-                alert("As senhas não coincidem");
-                return false;
-            }
+                var x = document.getElementById("email").value;
+                if( x == "")
+                {
+                    alert("Email inválido");
+                    return;
+                }
+                else{
+                   document.getElementById("form1").submit(); 
+                }
+
         }
 
-            
+        
 
         </script>
 
-    <!--onsubimit fericia se o retorno da função é verdadeira ou falsa se verdadeira ele vai submeter o form-->
-    <form action="server.php" method="post" onsubmit="return validaSenha();"> 
-        <br>
-        Senha: <input type="password" id="n1"  required disabled> <!-- o disabled desativa o teclado-->
-        <br>
-        Repita a senha: <input type="password" id="n2" required>
-        <br>
-        <input type="submit" value="Cadastrar">
-    </form>
+
+    
 
     </body>
 </html>
