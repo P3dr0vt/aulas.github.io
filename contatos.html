@@ -1,35 +1,48 @@
 <html>
-    <body>
-        <form id="form1" action="server.php">
-            <input type="email" id="email">
-            <input type="password" id="senha">
-            <input onclick="verifica()" type="button" value="Enviar">
-        </form>
-        <button onclick="soma()">Somar</button>
-        <button onclick="apaga()">Apagar</button>
-        <button onclick="escreve('1')">1</button>
-        <button onclick="escreve('2')">2</button>
-        <button onclick="escreve('3')">3</button>
-        <button onclick="escreve('4')">4</button>
-        <button onclick="escreve('5')">5</button>
+    <head>
+            <title> Cadastro</title>
+    </head>
 
+        <br>
+        <button type='button'onclick="escreve('1')">1</button>
+        <button type='button'onclick="escreve('2')">2</button>
+        <button type='button'onclick="escreve('3')">3</button>  <br>
+
+        <button type='button'onclick="escreve('4')">4</button>
+        <button type='button'onclick="escreve('5')">5</button>
+        <button type='button'onclick="escreve('6')">6</button>  <br>
+
+        <button type='button'onclick="escreve('7')">7</button>
+        <button type='button'onclick="escreve('8')">8</button>
+        <button type='button'onclick="escreve('9')">9</button>    <br>
+
+        <button type='button'onclick="escreve('0')">0</button>
+        <button type='button'onclick="back('<')"><</button> <!--backspace-->
+        <button type='button'onclick="apaga('x')">x</button>
+        
         <script>
+
+            function apaga()
+            {
+                document.getElementById("n1").value = "";
+            }
+
             function escreve(n)
             {
-                document.getElementById("senha").value += n;
+                document.getElementById("n1").value += n;
             }
-            function verifica()
-            {
-                var x = document.getElementById("email").value;
-                if( x == "")
-                {
-                    alert("Campo vazio");
-                    return;
-                }
-                else{
-                   document.getElementById("form1").submit(); 
-                }
-                //função que verifica se as senhas estão iguais
+
+            //função que apaga um elemento expecífico.
+
+            function back() 
+             {
+                            var campo = document.getElementById("n1");
+                            var valorCampo = campo.value;
+                            var novoValorCampo = valorCampo.substring(0, valorCampo.length - 1);
+                            campo.value = novoValorCampo;
+            }
+
+            //função que verifica se as senhas estão iguais
             function validaSenha() 
             {
             var senha1 = document.getElementById("n1").value.trim(); //trim() atributo que tira os espaços em branco
@@ -41,7 +54,21 @@
                 alert("As senhas não coincidem");
                 return false;
             }
-            }
+        }
+
+            
+
         </script>
+
+    <!--onsubimit fericia se o retorno da função é verdadeira ou falsa se verdadeira ele vai submeter o form-->
+    <form action="server.php" method="post" onsubmit="return validaSenha();"> 
+        <br>
+        Senha: <input type="password" id="n1"  required disabled> <!-- o disabled desativa o teclado-->
+        <br>
+        Repita a senha: <input type="password" id="n2" required>
+        <br>
+        <input type="submit" value="Cadastrar">
+    </form>
+
     </body>
 </html>
