@@ -1,21 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p><h1>PaperLaria</h1><br>Contatos:<br>Celular: 3591981919<br>Email: paperlaria@paper.com</p>
-    <p>Envie uma mensagem:</p>
-    <form action="server.php" method="post">
-        <p>Email:<input type="email" name="email" required></p>
-        <p>Senha:<input type="password" name="senha" minlength="8" maxlength="12" required></p>
-        <p>Mensagem: <br><textarea name="mensagem" placeholder="Digite Sua Mensagem"></textarea> </p>
-        <p><input type="checkbox" name="termos" required>Você concorda com os termos e condições do contrato?</p>
-        <p><input type="checkbox" name="spam">Deseja receber promoções e notícias?</p>
-        <p><input type="submit" value="Envie sua Mensagem"></p>
-    </form>
-</body>
+<html>
+    <body>
+        <form id="form1" action="server.php">
+            <input type="email" id="email">
+            <input type="password" id="senha">
+            <input onclick="verifica()" type="button" value="Enviar">
+        </form>
+        <button onclick="soma()">Somar</button>
+        <button onclick="apaga()">Apagar</button>
+        <button onclick="escreve('1')">1</button>
+        <button onclick="escreve('2')">2</button>
+        <button onclick="escreve('3')">3</button>
+        <button onclick="escreve('4')">4</button>
+        <button onclick="escreve('5')">5</button>
+
+        <script>
+            function escreve(n)
+            {
+                document.getElementById("senha").value += n;
+            }
+            function verifica()
+            {
+                var x = document.getElementById("email").value;
+                if( x == "")
+                {
+                    alert("Campo vazio");
+                    return;
+                }
+                else{
+                   document.getElementById("form1").submit(); 
+                }
+                //função que verifica se as senhas estão iguais
+            function validaSenha() 
+            {
+            var senha1 = document.getElementById("n1").value.trim(); //trim() atributo que tira os espaços em branco
+            var senha2 = document.getElementById("n2").value.trim();
+            if (senha1 == senha2)
+            {
+                return true;
+            } else {
+                alert("As senhas não coincidem");
+                return false;
+            }
+            }
+        </script>
+    </body>
 </html>
